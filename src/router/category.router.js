@@ -5,4 +5,6 @@ const validateCategory = require('../middlewares/validateCategory');
 
 categoryRouter.post('/', authToken, validateCategory, categoryController.categoryInsert);
 
+categoryRouter.get('/', authToken, categoryController.getAllCategories);
+
 module.exports = categoryRouter;
