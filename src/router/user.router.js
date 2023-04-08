@@ -1,12 +1,10 @@
-const loginRouter = require('express').Router();
+const userRouter = require('express').Router();
 const userController = require('../controller/user.controller');
-// const { authToken } = require('../middlewares/auth.middleware');
+const { authToken } = require('../middlewares/auth.middleware');
 const validateUser = require('../middlewares/validateUser');
 
-loginRouter.post(
-  '/',
-  validateUser,
-  userController.userInsert,
-  );
+userRouter.post('/', validateUser, userController.userInsert);
 
-module.exports = loginRouter;
+userRouter.get('/', authToken, userController.getAllUsers);
+
+module.exports = userRouter;
