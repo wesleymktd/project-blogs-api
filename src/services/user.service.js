@@ -29,7 +29,7 @@ const getById = async (id) => {
     throw httpGenerator(404, 'User does not exist');
   }
 
-  const user = await User.findAll({
+  const [user] = await User.findAll({
     where: { id },
     attributes: { exclude: ['password'] },
   });
