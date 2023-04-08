@@ -22,7 +22,22 @@ const getAllUsers = async () => {
   return users;
 };
 
+const getById = async (id) => {
+  const userExists = await User.findOne({ where: { id } });
+
+  if (!userExists) {
+    throw httpGenerator(404, 'User does not exist');
+  }
+
+  const user = await User.findAll({
+    where: { id },
+    attributes: { exclude: ['password'] },
+  });
+  return user;
+};
+
 module.exports = { 
   userInsert,
   getAllUsers,
+  getById,
 };
