@@ -11,7 +11,7 @@ const authToken = (req, res, next) => {
     const retornoToken = validateToken(authorization);
 
     req.user = retornoToken;
-    
+    // console.log('retorno validação', retornoToken);
     next();
   } catch (err) {
     console.log(err);

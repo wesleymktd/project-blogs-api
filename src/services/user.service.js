@@ -2,15 +2,14 @@ const { User } = require('../models');
 const httpGenerator = require('../utils/httpGenerator');
 const { generateToken } = require('../utils/auth');
 
-const userInsert = async (newUser) => {
-  // console.log('email, password', email, password);
-  const userExists = await User.findOne({ where: { email: newUser.email } });
+const userInsert = async (request) => {
+  const userExists = await User.findOne({ where: { email: request.email } });
 
   if (userExists) {
     throw httpGenerator(409, 'User already registered');
   } 
 
-  await User.create(newUser);
+  const newUser = await User.create(request);
 
   const token = generateToken({ email: newUser.email });
 

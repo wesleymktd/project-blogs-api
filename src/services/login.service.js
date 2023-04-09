@@ -8,7 +8,7 @@ const userAuthenticate = async ({ email, password }) => {
 
   if (!user) throw httpGenerator(400, 'Invalid fields');
   
-  const token = generateToken({ email });
+  const token = generateToken({ id: user.id, email });
 
   return token;
 };
