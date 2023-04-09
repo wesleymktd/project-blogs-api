@@ -5,6 +5,8 @@ const validatePost = require('../middlewares/validatePost');
 
 postRouter.post('/', authToken, validatePost, postController.postInsert);
 
+postRouter.get('/', authToken, postController.findAllPosts);
+
 // postRouter.get('/', authToken, userController.getAllUsers);
 
 // postRouter.get('/:id', authToken, userController.getById);

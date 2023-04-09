@@ -9,6 +9,16 @@ const postInsert = async (req, res, next) => {
   }  
 };
 
+const findAllPosts = async (_req, res, next) => {
+  try {
+    const posts = await postService.findAllPosts();
+    return res.status(200).json(posts);
+  } catch (err) {
+    next(err);
+  }
+};
+
 module.exports = {
   postInsert,
+  findAllPosts,
 };
