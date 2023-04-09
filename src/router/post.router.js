@@ -7,6 +7,8 @@ postRouter.post('/', authToken, validatePost, postController.postInsert);
 
 postRouter.get('/', authToken, postController.findAllPosts);
 
+postRouter.get('/:id', authToken, postController.getPostById);
+
 // postRouter.get('/', authToken, userController.getAllUsers);
 
 // postRouter.get('/:id', authToken, userController.getById);
