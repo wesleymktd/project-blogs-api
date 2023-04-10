@@ -2,6 +2,24 @@ const { BlogPost, PostCategory, Category, User } = require('../models');
 const httpGenerator = require('../utils/httpGenerator');
 // const { generateToken } = require('../utils/auth');
 
+const existsVerifiqPost = async (id) => {
+  const [post] = await BlogPost.findAll({
+    where: { id },
+  });
+
+  if (!post) {
+    throw httpGenerator(404, 'Post does not exist');
+  }
+
+  return post;
+};
+
+const verifyAuthUser = (post, userId) => {
+  if (post.userId !== userId) {
+    throw httpGenerator(401, 'Unauthorized user');
+  }
+};
+
 const postInsert = async ({ title, content, categoryIds }, userId) => {
   const categoriesExists = await Promise.all(categoryIds.map((id) =>
   Category.findOne({ where: { id } })));
@@ -47,8 +65,19 @@ const getPostById = async (id) => {
   return post;
 };
 
+const updatePost = async ({ title, content }, postId, userId) => {
+  const verifiqPost = await existsVerifiqPost(postId);
+  verifyAuthUser(verifiqPost, userId);
+
+  await BlogPost.update({ title, content }, { where: { id: postId } });
+  const postUpdated = getPostById(postId);
+  return postUpdated;
+  // return verifiqPost;
+};
+
 module.exports = { 
   postInsert,
   findAllPosts,
   getPostById,
+  updatePost,
 };
