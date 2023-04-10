@@ -12,6 +12,8 @@ postRouter.get('/:id', authToken, postController.getPostById);
 
 postRouter.put('/:id', authToken, validateUpdatePost, postController.postUpdated);
 
+postRouter.delete('/:id', authToken, postController.postDelete);
+
 // postRouter.get('/', authToken, userController.getAllUsers);
 
 // postRouter.get('/:id', authToken, userController.getById);

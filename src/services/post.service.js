@@ -72,7 +72,13 @@ const updatePost = async ({ title, content }, postId, userId) => {
   await BlogPost.update({ title, content }, { where: { id: postId } });
   const postUpdated = getPostById(postId);
   return postUpdated;
-  // return verifiqPost;
+};
+
+const deletePost = async (postId, userId) => {
+  const verifiqPost = await existsVerifiqPost(postId);
+  verifyAuthUser(verifiqPost, userId);
+
+  await BlogPost.destroy({ where: { id: postId } });
 };
 
 module.exports = { 
@@ -80,4 +86,5 @@ module.exports = {
   findAllPosts,
   getPostById,
   updatePost,
+  deletePost,
 };
