@@ -8,6 +8,8 @@ postRouter.post('/', authToken, validatePost, postController.postInsert);
 
 postRouter.get('/', authToken, postController.findAllPosts);
 
+postRouter.get('/search', authToken, postController.postSearch);
+
 postRouter.get('/:id', authToken, postController.getPostById);
 
 postRouter.put('/:id', authToken, validateUpdatePost, postController.postUpdated);
