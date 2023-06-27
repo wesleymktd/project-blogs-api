@@ -2,13 +2,13 @@
 
 Esse projeto se trata de uma API e um banco de dados para a produção de conteúdo para um blog. Onde foi aplicado conceitos de Arquitetura de Software, ORM e Autorização e autenticação utilizando o modelo Model Service Controler, Sequelize e JWebToken. Nessa API temos todo o fluxo de login e Cadastro junto com um CRUD (create Read Update e Delete) para as postagens. Além disso, Foi utilizado nesse projeto o Docker Compose.
 
-## Nesse projeto eu:
+# Nesse projeto eu:
 
 - desenvolvi uma API RESTful e um banco de dados SQL para produzir conteúdo para um blog;
 - desenvolvi uma aplicação em Node.js utilizando o pacote sequelize para fazer um CRUD dos posts:
   - Para fazer um post, precisa de um usuário e um login, logo, foi trabalhado a relação entre usuário e post, e usei o JWT para autentivcação de usuário;
-<br>
-<strong> ## ⚒ Instalando </strong><a name = "installing"></a>
+
+## ⚒ Instalando 
 <details>
  
   <summary><strong>🐋 Rodando no Docker vs Localmente</strong></summary>
@@ -64,4 +64,4 @@ Esse projeto se trata de uma API e um banco de dados para a produção de conte�
 
 ## Contribuição
 
-Fiz o src e todo conteúdo dentro dela. Os outros arquivos foram feitos pela Trybe.
+Criei a pasta src e todo conteúdo dentro dela. Os outros arquivos foram feitos pela Trybe.
